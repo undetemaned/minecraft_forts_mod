@@ -1,0 +1,57 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "net.undetemaned",
+		"id": "forts",
+		"version": "0.0.1-1.19.2",
+		"metadata": {
+			"name": "forts",
+			"description": "forts",
+			"contributors": {
+				"undetemaned": "undetemaned"
+			},
+			"contact": {
+				"homepage": "",
+				"issues": "",
+				"sources": "https://github.com/jadelily18/quilt-template-kotlin"
+			},
+			"license": "MIT",
+			"icon": "assets/forts/icon.png"
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": {
+				"adapter": "kotlin",
+				"value": "net.undetemaned.forts.fortsMod"
+			},
+			"modmenu": {
+				"adapter": "kotlin",
+				"value": "net.undetemaned.forts.integrations.ModMenuImpl"
+			}
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=0.17.0-"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": ">=4.0.0-"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=1.19.2"
+			},
+			{
+				"id": "qkl",
+				"versions": "0.1.2-MODFEST"
+			}
+		]
+	},
+	"modmenu": {
+		"links": {
+
+		}
+	},
+	"mixin": "forts.mixins.json"
+}
