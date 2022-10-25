@@ -1,5 +1,6 @@
 package net.undetemaned.forts
 
+import keyBindHandler
 import org.quiltmc.loader.api.ModContainer
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer
 import org.slf4j.Logger
@@ -13,6 +14,6 @@ object fortsMod : ModInitializer {
     val LOGGER: Logger = LoggerFactory.getLogger(MOD_ID)
 
     override fun onInitialize(mod: ModContainer) {
-
+    keyBindHandler.registerKeyInputs()
     }
 }
