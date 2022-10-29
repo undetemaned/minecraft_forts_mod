@@ -1,4 +1,10 @@
 {
-"key.category.forts.forts": "forts mod",
-"key.forts.add.energy": " add Energy"
+  "key.category.forts.forts": "forts mod",
+
+  "key.forts.add.energy": " add Energy",
+  "key.forts.remove.energy": " remove Energy",
+
+  "key.forts.remove.energy.cap": " remove Energy cap",
+  "key.forts.add.energy.cap": " add Energy cap"
+
 }
