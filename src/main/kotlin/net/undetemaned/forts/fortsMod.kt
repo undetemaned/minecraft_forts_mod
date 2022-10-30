@@ -3,11 +3,11 @@ package net.undetemaned.forts
 import keyBindHandler
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
 import net.undetemaned.forts.client.EnergyHudOverlay
-import net.undetemaned.forts.event.PlayerTickHandler
+import net.undetemaned.forts.event.ClientPlayConnectionJoin
 import net.undetemaned.forts.networking.packetManager
 import org.quiltmc.loader.api.ModContainer
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer
-import org.quiltmc.qsl.lifecycle.api.client.event.ClientTickEvents
+import org.quiltmc.qsl.networking.api.client.ClientPlayConnectionEvents
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -23,8 +23,7 @@ object fortsMod : ModInitializer {
         keyBindHandler.registerKeyInputs()
         packetManager.registerPacketManager()
         HudRenderCallback.EVENT.register(EnergyHudOverlay)
-
-        ClientTickEvents.START.register(PlayerTickHandler())
+        ClientPlayConnectionEvents.JOIN.register(ClientPlayConnectionJoin)
 
     }
 }

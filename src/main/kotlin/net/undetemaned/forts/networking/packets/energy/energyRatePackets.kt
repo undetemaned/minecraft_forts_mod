@@ -16,13 +16,13 @@ import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking
 
 object addEnergyRateC2SPacket {
     fun receive(server: MinecraftServer?, player: ServerPlayerEntity, handler: ServerPlayNetworkHandler?, buf: PacketByteBuf?, responseSender: PacketSender?) {
-        addEnergyRate(player as IEntityDataSaver, 100)
+        addEnergyRate(player as IEntityDataSaver, 1)
     }
 }
 
 object removeEnergyRateC2SPacket {
     fun receive(server: MinecraftServer?, player: ServerPlayerEntity, handler: ServerPlayNetworkHandler?, buf: PacketByteBuf?, responseSender: PacketSender?) {
-        removeEnergyRate(player as IEntityDataSaver, 100)
+        removeEnergyRate(player as IEntityDataSaver, 1)
     }
 }
 
