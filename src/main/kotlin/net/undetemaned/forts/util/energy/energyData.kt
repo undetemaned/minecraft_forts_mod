@@ -9,14 +9,16 @@ import org.quiltmc.qsl.networking.api.PacketByteBufs
 import org.quiltmc.qsl.networking.api.ServerPlayNetworking
 
 
-fun addEnergy(player: IEntityDataSaver, amount: Int): Int {
+fun addEnergy(player: IEntityDataSaver): Int {
     val nbt = player.persistentData
     var energy = nbt!!.getInt("energy")
-    var cap = nbt!!.getInt("energy cap")
+    val cap = nbt.getInt("energy cap")
+    val rate = nbt.getInt("energy rate")
+    val rateTick = rate/20
 
-    when(energy + amount >= cap) {
+    when(energy + rateTick >= cap) {
         true -> energy = cap
-        false -> energy += amount
+        false -> energy += rateTick
     }
 
     nbt.putInt("energy", energy)

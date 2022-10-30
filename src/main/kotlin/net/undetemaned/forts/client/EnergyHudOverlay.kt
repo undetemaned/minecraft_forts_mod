@@ -25,6 +25,7 @@ object EnergyHudOverlay : HudRenderCallback {
 
         val currentEnergy = (MinecraftClient.getInstance().player as IEntityDataSaver).persistentData!!.getInt("energy")
         val currentEnergyCap = (MinecraftClient.getInstance().player as IEntityDataSaver).persistentData!!.getInt("energy cap")
+        val currentEnergyRate = (MinecraftClient.getInstance().player as IEntityDataSaver).persistentData!!.getInt("energy rate")
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -36,7 +37,8 @@ object EnergyHudOverlay : HudRenderCallback {
         //DrawableHelper.drawTexture(matrixStack,x + 250,y - 12 * 13, 0F, 0F, 10,80,10,80);
         //https://www.digminecraft.com/lists/color_list_pc.php
         DrawableHelper.drawCenteredText(matrixStack, MinecraftClient.getInstance().textRenderer, currentEnergy.toString(), x + 100, y - 10, 16777215)
-        DrawableHelper.drawCenteredText(matrixStack, MinecraftClient.getInstance().textRenderer, currentEnergyCap.toString(), x + 120, y - 10, 11184810)
+        DrawableHelper.drawCenteredText(matrixStack, MinecraftClient.getInstance().textRenderer, currentEnergyCap.toString(), x + 130, y - 10, 11184810)
+        DrawableHelper.drawCenteredText(matrixStack, MinecraftClient.getInstance().textRenderer, currentEnergyRate.toString(), x + 160, y - 10, 11184810)
 
 
     }

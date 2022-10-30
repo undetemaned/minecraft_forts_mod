@@ -43,8 +43,8 @@ fun removeEnergyCap(player: IEntityDataSaver, amount: Int): Int {
     return energyCap
 }
 
-fun syncEnergyCap(energy: Int, player: ServerPlayerEntity?) {
+fun syncEnergyCap(energyCap: Int, player: ServerPlayerEntity?) {
     val buffer: PacketByteBuf = PacketByteBufs.create()
-    buffer.writeInt(energy)
+    buffer.writeInt(energyCap)
     ServerPlayNetworking.send(player, packetManager.SYNC_ENERGY_CAP_ID, buffer)
 }

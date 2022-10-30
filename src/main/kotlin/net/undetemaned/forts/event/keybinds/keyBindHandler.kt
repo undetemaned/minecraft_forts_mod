@@ -33,19 +33,32 @@ object keyBindHandler {
     val KEY_REMOVE_ENERGY_CAP = "key.forts.remove.energy.cap"
     val removeEnergyCapKey: KeyBind? = registerKeyBind(KEY_CATEGORY_FORTS, KEY_REMOVE_ENERGY_CAP, 333)
 
+    //energy rate keyBinds
+    val KEY_ADD_ENERGY_RATE = "key.forts.add.energy.rate"
+    val addEnergyRateKey: KeyBind? = registerKeyBind(KEY_CATEGORY_FORTS, KEY_ADD_ENERGY_RATE, 334)
+
+    val KEY_REMOVE_ENERGY_RATE = "key.forts.remove.energy.rate"
+    val removeEnergyRateKey: KeyBind? = registerKeyBind(KEY_CATEGORY_FORTS, KEY_REMOVE_ENERGY_RATE, 333)
+
     fun registerKeyInputs() {
         ClientTickEvents.END.register { client ->
             if (addEnergyKey!!.wasPressed()) {
-                ClientPlayNetworking.send(packetManager.ADD_ENERGY_ID, PacketByteBufs.create());
+                ClientPlayNetworking.send(packetManager.ADD_ENERGY_ID, PacketByteBufs.create())
             }
             if (removeEnergyKey!!.wasPressed()) {
-                ClientPlayNetworking.send(packetManager.REMOVE_ENERGY_ID, PacketByteBufs.create());
+                ClientPlayNetworking.send(packetManager.REMOVE_ENERGY_ID, PacketByteBufs.create())
             }
             if (addEnergyCapKey!!.wasPressed()) {
-                ClientPlayNetworking.send(packetManager.ADD_ENERGY_CAP_ID, PacketByteBufs.create());
+                ClientPlayNetworking.send(packetManager.ADD_ENERGY_CAP_ID, PacketByteBufs.create())
             }
             if (removeEnergyCapKey!!.wasPressed()) {
-                ClientPlayNetworking.send(packetManager.REMOVE_ENERGY_CAP_ID, PacketByteBufs.create());
+                ClientPlayNetworking.send(packetManager.REMOVE_ENERGY_CAP_ID, PacketByteBufs.create())
+            }
+            if (removeEnergyRateKey!!.wasPressed()) {
+                ClientPlayNetworking.send(packetManager.REMOVE_ENERGY_RATE_ID, PacketByteBufs.create())
+            }
+            if (addEnergyRateKey!!.wasPressed()) {
+                ClientPlayNetworking.send(packetManager.ADD_ENERGY_RATE_ID, PacketByteBufs.create())
             }
 
         }

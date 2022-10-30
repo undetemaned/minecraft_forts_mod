@@ -8,26 +8,26 @@ import net.minecraft.server.network.ServerPlayNetworkHandler
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.Text
 import net.undetemaned.forts.networking.packetManager
-import net.undetemaned.forts.util.IEntityDataSaver
-import net.undetemaned.forts.util.addEnergy
-import net.undetemaned.forts.util.removeEnergy
-import net.undetemaned.forts.util.syncEnergy
+import net.undetemaned.forts.util.*
 import org.quiltmc.qsl.networking.api.PacketByteBufs
 import org.quiltmc.qsl.networking.api.PacketSender
 import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking
 
 
-object addEnergyC2SPacket {
+object addEnergyRateC2SPacket {
     fun receive(server: MinecraftServer?, player: ServerPlayerEntity, handler: ServerPlayNetworkHandler?, buf: PacketByteBuf?, responseSender: PacketSender?) {
-        addEnergy(player as IEntityDataSaver)
-    }}
+        addEnergyRate(player as IEntityDataSaver, 100)
+    }
+}
 
-object removeEnergyC2SPacket {
+object removeEnergyRateC2SPacket {
     fun receive(server: MinecraftServer?, player: ServerPlayerEntity, handler: ServerPlayNetworkHandler?, buf: PacketByteBuf?, responseSender: PacketSender?) {
-        removeEnergy(player as IEntityDataSaver, 100)
-    }}
+        removeEnergyRate(player as IEntityDataSaver, 100)
+    }
+}
 
-object syncEnergyS2CPacket {
+object syncEnergyRateS2CPacket {
     fun receive(client: MinecraftClient, handler: ClientPlayNetworkHandler?, buf: PacketByteBuf, responseSender: PacketSender?) {
-        (client.player as IEntityDataSaver).persistentData!!.putInt("energy", buf.readInt())
-    }}
+        (client.player as IEntityDataSaver).persistentData!!.putInt("energy rate", buf.readInt())
+    }
+}
