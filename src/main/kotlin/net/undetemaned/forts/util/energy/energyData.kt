@@ -1,34 +1,30 @@
 package net.undetemaned.forts.util
 
 import net.minecraft.network.PacketByteBuf
-
 import net.minecraft.server.network.ServerPlayerEntity
 import net.undetemaned.forts.networking.packetManager
-import net.undetemaned.forts.networking.packets.syncEnergyS2CPacket
 import org.quiltmc.qsl.networking.api.PacketByteBufs
 import org.quiltmc.qsl.networking.api.ServerPlayNetworking
 
 
-fun addEnergy(player: IEntityDataSaver): Int {
+fun addEnergy(player: IEntityDataSaver, amount: Int): Int {
     val nbt = player.persistentData
     var energy = nbt!!.getInt("energy")
     val cap = nbt.getInt("energy cap")
-    val rate = nbt.getInt("energy rate")
-    val rateTick = rate/20
 
-    when(energy + rateTick >= cap) {
+    when(energy + amount >= cap) {
         true -> energy = cap
-        false -> energy += rateTick
+        false -> energy += amount
     }
-
     nbt.putInt("energy", energy)
     syncEnergy(energy, player as ServerPlayerEntity)
     return energy
+
 }
 
 fun removeEnergy(player: IEntityDataSaver, amount: Int): Int {
     val nbt = player.persistentData
-    var energy = nbt!!.getInt("energy")
+    var energy = nbt.getInt("energy")
 
     when(energy - amount <= 0) {
         true -> energy = 0

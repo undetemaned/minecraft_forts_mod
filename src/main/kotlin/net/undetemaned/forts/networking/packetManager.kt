@@ -1,10 +1,15 @@
 package net.undetemaned.forts.networking
 
+import net.minecraft.client.MinecraftClient
+import net.minecraft.client.network.ClientPlayNetworkHandler
+import net.minecraft.network.PacketByteBuf
 import net.minecraft.util.Identifier
 import net.undetemaned.forts.fortsMod
 import net.undetemaned.forts.networking.packets.*
+import org.quiltmc.qsl.networking.api.PacketSender
 import org.quiltmc.qsl.networking.api.ServerPlayNetworking
 import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking
+
 
 object packetManager {
     //energy packets
@@ -19,6 +24,7 @@ object packetManager {
     val ADD_ENERGY_RATE_ID: Identifier = Identifier(fortsMod.MOD_ID, "add.energy.rate.id")
     val REMOVE_ENERGY_RATE_ID: Identifier = Identifier(fortsMod.MOD_ID, "remove.energy.rate.id")
     val SYNC_ENERGY_RATE_ID: Identifier = Identifier(fortsMod.MOD_ID, "sync.energy.rate.id")
+
 
     fun registerC2SPackets() {
         //energy packets
@@ -37,6 +43,17 @@ object packetManager {
         ClientPlayNetworking.registerGlobalReceiver(SYNC_ENERGY_ID, syncEnergyS2CPacket::receive)
         ClientPlayNetworking.registerGlobalReceiver(SYNC_ENERGY_CAP_ID, syncEnergyCapS2CPacket::receive)
         ClientPlayNetworking.registerGlobalReceiver(SYNC_ENERGY_RATE_ID, syncEnergyRateS2CPacket::receive)
+
+        /*ClientPlayNetworking.registerGlobalReceiver(SYNC_ENERGY_ID)
+
+        { client: MinecraftClient, handler: ClientPlayNetworkHandler?, buf: PacketByteBuf?, responseSender: PacketSender? ->
+            client.execute {
+                // Everything in this lambda is run on the render thread
+
+            }
+        }
+
+         */
     }
 
     fun registerPacketManager() {

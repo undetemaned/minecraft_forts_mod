@@ -6,20 +6,15 @@ import net.minecraft.network.PacketByteBuf
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.network.ServerPlayNetworkHandler
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.text.Text
-import net.undetemaned.forts.networking.packetManager
 import net.undetemaned.forts.util.IEntityDataSaver
 import net.undetemaned.forts.util.addEnergy
 import net.undetemaned.forts.util.removeEnergy
-import net.undetemaned.forts.util.syncEnergy
-import org.quiltmc.qsl.networking.api.PacketByteBufs
 import org.quiltmc.qsl.networking.api.PacketSender
-import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking
 
 
 object addEnergyC2SPacket {
     fun receive(server: MinecraftServer?, player: ServerPlayerEntity, handler: ServerPlayNetworkHandler?, buf: PacketByteBuf?, responseSender: PacketSender?) {
-        addEnergy(player as IEntityDataSaver)
+        addEnergy(player as IEntityDataSaver, 1)
     }}
 
 object removeEnergyC2SPacket {

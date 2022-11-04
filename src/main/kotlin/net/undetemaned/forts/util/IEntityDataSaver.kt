@@ -4,5 +4,5 @@ import net.minecraft.nbt.NbtCompound
 
 
 interface IEntityDataSaver {
-    val persistentData: NbtCompound?
+    val persistentData: NbtCompound
 }

@@ -31,3 +31,4 @@ object syncEnergyRateS2CPacket {
         (client.player as IEntityDataSaver).persistentData!!.putInt("energy rate", buf.readInt())
     }
 }
+
